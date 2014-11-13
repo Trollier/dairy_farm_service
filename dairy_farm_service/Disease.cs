@@ -12,15 +12,17 @@ namespace dairy_farm_service
     using System;
     using System.Collections.Generic;
     
-    public partial class NOURRITURE_CONSOMMER
+    public partial class Disease
     {
-        public int ID_NOURRITURE { get; set; }
-        public int IDTROUPEAU { get; set; }
-        public System.DateTime DATEDECONS { get; set; }
-        public System.DateTime HEUREDECONS { get; set; }
-        public double QUANTITE_CONS { get; set; }
+        public Disease()
+        {
+            this.DiseaseHistories = new HashSet<DiseaseHistory>();
+        }
     
-        public virtual STOCK_NOURRITURE STOCK_NOURRITURE { get; set; }
-        public virtual TROUPEAU TROUPEAU { get; set; }
+        public int idDisease { get; set; }
+        public string name { get; set; }
+        public bool contagious { get; set; }
+    
+        public virtual ICollection<DiseaseHistory> DiseaseHistories { get; set; }
     }
 }

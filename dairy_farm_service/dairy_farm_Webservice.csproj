@@ -67,58 +67,60 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service1.svc" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOVIN.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+    <Compile Include="Cattle.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dairy_farm.Context.cs">
+    <Compile Include="CattleProduction.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CattleType.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dairyFarm.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Dairy_farm.Context.tt</DependentUpon>
+      <DependentUpon>dairyFarm.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dairy_farm.cs">
+    <Compile Include="dairyFarm.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dairy_farm.Designer.cs">
+    <Compile Include="dairyFarm.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Dairy_farm.edmx</DependentUpon>
+      <DependentUpon>dairyFarm.edmx</DependentUpon>
     </Compile>
-    <Compile Include="GESTATION.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+    <Compile Include="Disease.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
-    <Compile Include="HISTORIQUE_MALADIE.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+    <Compile Include="DiseaseHistory.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
-    <Compile Include="MALADIE.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+    <Compile Include="FoodComsuption.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
-    <Compile Include="NOURRITURE_CONSOMMER.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+    <Compile Include="FoodStock.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCTION_BOVIN.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+    <Compile Include="Gestation.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HealthStatu.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Herd.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="STATUT.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="STOCK_NOURRITURE.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TROUPEAU.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TYPEBOVINS.cs">
-      <DependentUpon>Dairy_farm.tt</DependentUpon>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>dairyFarm.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -126,32 +128,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Dairy_farm.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Dairy_farm.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Dairy_farm.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Dairy_farm.edmx</DependentUpon>
-      <LastGenOutput>Dairy_farm.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Dairy_farm.edmx.diagram">
-      <DependentUpon>Dairy_farm.edmx</DependentUpon>
-    </Content>
-    <Content Include="Dairy_farm.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Dairy_farm.edmx</DependentUpon>
-      <LastGenOutput>Dairy_farm.cs</LastGenOutput>
-    </Content>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="dairyFarm.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dairyFarm.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dairyFarm.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dairyFarm.edmx</DependentUpon>
+      <LastGenOutput>dairyFarm.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="dairyFarm.edmx.diagram">
+      <DependentUpon>dairyFarm.edmx</DependentUpon>
+    </Content>
+    <Content Include="dairyFarm.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dairyFarm.edmx</DependentUpon>
+      <LastGenOutput>dairyFarm.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web.Config" />
+    <None Include="Web.Debug.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
+    <None Include="Web.Release.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

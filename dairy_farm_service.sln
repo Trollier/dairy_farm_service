@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dairy_farm_service", "dairy_farm_service\dairy_farm_service.csproj", "{EBA2A47A-BC88-4DA3-A6B1-A4835A566ABC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dairy_farm_Webservice", "dairy_farm_service\dairy_farm_Webservice.csproj", "{EBA2A47A-BC88-4DA3-A6B1-A4835A566ABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialisation", "I:\web service formation\ExempleWCF\Serialisation\Serialisation.csproj", "{8EB1B86F-5499-4F5B-A84B-A63FA7E53A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EBA2A47A-BC88-4DA3-A6B1-A4835A566ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBA2A47A-BC88-4DA3-A6B1-A4835A566ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBA2A47A-BC88-4DA3-A6B1-A4835A566ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB1B86F-5499-4F5B-A84B-A63FA7E53A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB1B86F-5499-4F5B-A84B-A63FA7E53A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB1B86F-5499-4F5B-A84B-A63FA7E53A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB1B86F-5499-4F5B-A84B-A63FA7E53A43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

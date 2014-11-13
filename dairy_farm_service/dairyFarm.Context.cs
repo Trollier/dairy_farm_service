@@ -13,10 +13,10 @@ namespace dairy_farm_service
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dairy_farmEntities1 : DbContext
+    public partial class dairyFarmEntities : DbContext
     {
-        public dairy_farmEntities1()
-            : base("name=dairy_farmEntities1")
+        public dairyFarmEntities()
+            : base("name=dairyFarmEntities")
         {
         }
     
@@ -25,15 +25,15 @@ namespace dairy_farm_service
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<BOVIN> BOVIN { get; set; }
-        public DbSet<GESTATION> GESTATION { get; set; }
-        public DbSet<HISTORIQUE_MALADIE> HISTORIQUE_MALADIE { get; set; }
-        public DbSet<MALADIE> MALADIE { get; set; }
-        public DbSet<NOURRITURE_CONSOMMER> NOURRITURE_CONSOMMER { get; set; }
-        public DbSet<PRODUCTION_BOVIN> PRODUCTION_BOVIN { get; set; }
-        public DbSet<STATUT> STATUT { get; set; }
-        public DbSet<STOCK_NOURRITURE> STOCK_NOURRITURE { get; set; }
-        public DbSet<TROUPEAU> TROUPEAU { get; set; }
-        public DbSet<TYPEBOVINS> TYPEBOVINS { get; set; }
+        public DbSet<Cattle> Cattle { get; set; }
+        public DbSet<CattleProduction> CattleProductions { get; set; }
+        public DbSet<CattleType> CattleTypes { get; set; }
+        public DbSet<Disease> Diseases { get; set; }
+        public DbSet<DiseaseHistory> DiseaseHistories { get; set; }
+        public DbSet<FoodComsuption> FoodComsuptions { get; set; }
+        public DbSet<FoodStock> FoodStocks { get; set; }
+        public DbSet<Gestation> Gestations { get; set; }
+        public DbSet<HealthStatu> HealthStatus { get; set; }
+        public DbSet<Herd> Herds { get; set; }
     }
 }

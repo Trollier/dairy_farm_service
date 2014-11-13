@@ -12,15 +12,15 @@ namespace dairy_farm_service
     using System;
     using System.Collections.Generic;
     
-    public partial class HISTORIQUE_MALADIE
+    public partial class FoodComsuption
     {
-        public string IDBOVIN { get; set; }
-        public int ID_MALADIE { get; set; }
-        public System.DateTime STARTMALADIE { get; set; }
-        public Nullable<System.DateTime> END_MALADIE { get; set; }
-        public Nullable<bool> VISITE_VETERINAIRE { get; set; }
+        public int idFood { get; set; }
+        public int idHerd { get; set; }
+        public System.DateTime dateCons { get; set; }
+        public System.DateTime hourCons { get; set; }
+        public double quantityCons { get; set; }
     
-        public virtual BOVIN BOVIN { get; set; }
-        public virtual MALADIE MALADIE { get; set; }
+        public virtual FoodStock FoodStock { get; set; }
+        public virtual Herd Herd { get; set; }
     }
 }

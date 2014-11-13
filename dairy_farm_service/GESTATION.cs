@@ -12,16 +12,16 @@ namespace dairy_farm_service
     using System;
     using System.Collections.Generic;
     
-    public partial class GESTATION
+    public partial class Gestation
     {
-        public int ID_GESTATION { get; set; }
-        public string IDBOVIN { get; set; }
-        public System.DateTime DATE_DEBUT_GEST { get; set; }
-        public Nullable<System.DateTime> DATE_FIN_GEST { get; set; }
-        public System.DateTime DATE_ACCOUCHEMENT { get; set; }
-        public string SEXE_FOETUS { get; set; }
-        public string COMMENTAIRE { get; set; }
+        public int idGestation { get; set; }
+        public string idCattle { get; set; }
+        public System.DateTime dateBeginGest { get; set; }
+        public Nullable<System.DateTime> dateEnd { get; set; }
+        public System.DateTime dateCalve { get; set; }
+        public string calveSex { get; set; }
+        public string comment { get; set; }
     
-        public virtual BOVIN BOVIN { get; set; }
+        public virtual Cattle Cattle { get; set; }
     }
 }

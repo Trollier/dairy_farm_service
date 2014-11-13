@@ -12,17 +12,16 @@ namespace dairy_farm_service
     using System;
     using System.Collections.Generic;
     
-    public partial class MALADIE
+    public partial class HealthStatu
     {
-        public MALADIE()
+        public HealthStatu()
         {
-            this.HISTORIQUE_MALADIE = new HashSet<HISTORIQUE_MALADIE>();
+            this.Cattle = new HashSet<Cattle>();
         }
     
-        public int ID_MALADIE { get; set; }
-        public string NAME { get; set; }
-        public bool CONTAGIEUX { get; set; }
+        public int idStatus { get; set; }
+        public string statusName { get; set; }
     
-        public virtual ICollection<HISTORIQUE_MALADIE> HISTORIQUE_MALADIE { get; set; }
+        public virtual ICollection<Cattle> Cattle { get; set; }
     }
 }

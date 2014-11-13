@@ -12,14 +12,20 @@ namespace dairy_farm_service
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCTION_BOVIN
+    public partial class Herd
     {
-        public int ID_PRODUCTION_BOV { get; set; }
-        public string IDBOVIN { get; set; }
-        public System.DateTime STARTMALADIE { get; set; }
-        public System.DateTime HEURE { get; set; }
-        public double QUANTITE { get; set; }
+        public Herd()
+        {
+            this.Cattle = new HashSet<Cattle>();
+            this.FoodComsuptions = new HashSet<FoodComsuption>();
+        }
     
-        public virtual BOVIN BOVIN { get; set; }
+        public int idHerd { get; set; }
+        public int idCattleType { get; set; }
+        public int maxCows { get; set; }
+    
+        public virtual ICollection<Cattle> Cattle { get; set; }
+        public virtual CattleType CattleType { get; set; }
+        public virtual ICollection<FoodComsuption> FoodComsuptions { get; set; }
     }
 }

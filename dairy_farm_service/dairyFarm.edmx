@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dairyFarmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cattle">
+          <Key>
+            <PropertyRef Name="idCattle" />
+          </Key>
+          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="idCattleType" Type="int" Nullable="false" />
+          <Property Name="idHerd" Type="int" Nullable="false" />
+          <Property Name="idStatut" Type="int" Nullable="false" />
+          <Property Name="ative" Type="int" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="malParent" Type="int" />
+          <Property Name="femaleParent" Type="int" />
+          <Property Name="sex" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CattleProduction">
+          <Key>
+            <PropertyRef Name="idCattleProduction" />
+          </Key>
+          <Property Name="idCattleProduction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="dateProd" Type="datetime" Nullable="false" />
+          <Property Name="hourProd" Type="datetime" Nullable="false" />
+          <Property Name="quantityProd" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CattleType">
+          <Key>
+            <PropertyRef Name="idCattleType" />
+          </Key>
+          <Property Name="idCattleType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="idDisease" />
+          </Key>
+          <Property Name="idDisease" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="contagious" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiseaseHistory">
+          <Key>
+            <PropertyRef Name="idCattle" />
+            <PropertyRef Name="idDisease" />
+          </Key>
+          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="idDisease" Type="int" Nullable="false" />
+          <Property Name="startSick" Type="datetime" Nullable="false" />
+          <Property Name="endSick" Type="datetime" />
+          <Property Name="veterinaryVisit" Type="bit" />
+        </EntityType>
+        <EntityType Name="FoodComsuption">
+          <Key>
+            <PropertyRef Name="idFood" />
+            <PropertyRef Name="idHerd" />
+          </Key>
+          <Property Name="idFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idHerd" Type="int" Nullable="false" />
+          <Property Name="dateCons" Type="datetime" Nullable="false" />
+          <Property Name="hourCons" Type="datetime" Nullable="false" />
+          <Property Name="quantityCons" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodStock">
+          <Key>
+            <PropertyRef Name="idFood" />
+          </Key>
+          <Property Name="idFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quantityFood" Type="float" Nullable="false" />
+          <Property Name="foodName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gestation">
+          <Key>
+            <PropertyRef Name="idGestation" />
+          </Key>
+          <Property Name="idGestation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="dateBeginGest" Type="datetime" Nullable="false" />
+          <Property Name="dateEnd" Type="datetime" />
+          <Property Name="dateCalve" Type="datetime" Nullable="false" />
+          <Property Name="calveSex" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="comment" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HealthStatus">
+          <Key>
+            <PropertyRef Name="idStatus" />
+          </Key>
+          <Property Name="idStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="statusName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Herd">
+          <Key>
+            <PropertyRef Name="idHerd" />
+          </Key>
+          <Property Name="idHerd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCattleType" Type="int" Nullable="false" />
+          <Property Name="maxCows" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BOVIN_ASSOCIATI_TROUPEAU">
+          <End Role="Herd" Type="Self.Herd" Multiplicity="1" />
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Herd">
+              <PropertyRef Name="idHerd" />
+            </Principal>
+            <Dependent Role="Cattle">
+              <PropertyRef Name="idHerd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOVIN_ETRE_2_STATUT">
+          <End Role="HealthStatus" Type="Self.HealthStatus" Multiplicity="1" />
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="Cattle">
+              <PropertyRef Name="idStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOVIN_POSSEDE_TYPEBOVI">
+          <End Role="CattleType" Type="Self.CattleType" Multiplicity="1" />
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CattleType">
+              <PropertyRef Name="idCattleType" />
+            </Principal>
+            <Dependent Role="Cattle">
+              <PropertyRef Name="idCattleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GESTATIO_AVOIR_BOVIN">
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="1" />
+          <End Role="Gestation" Type="Self.Gestation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cattle">
+              <PropertyRef Name="idCattle" />
+            </Principal>
+            <Dependent Role="Gestation">
+              <PropertyRef Name="idCattle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORIQ_HISTORIQU_BOVIN">
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="1" />
+          <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cattle">
+              <PropertyRef Name="idCattle" />
+            </Principal>
+            <Dependent Role="DiseaseHistory">
+              <PropertyRef Name="idCattle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORIQ_HISTORIQU_MALADIE">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="idDisease" />
+            </Principal>
+            <Dependent Role="DiseaseHistory">
+              <PropertyRef Name="idDisease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOURRITU_NOURRITUR_STOCK_NO">
+          <End Role="FoodStock" Type="Self.FoodStock" Multiplicity="1" />
+          <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodStock">
+              <PropertyRef Name="idFood" />
+            </Principal>
+            <Dependent Role="FoodComsuption">
+              <PropertyRef Name="idFood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOURRITU_NOURRITUR_TROUPEAU">
+          <End Role="Herd" Type="Self.Herd" Multiplicity="1" />
+          <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Herd">
+              <PropertyRef Name="idHerd" />
+            </Principal>
+            <Dependent Role="FoodComsuption">
+              <PropertyRef Name="idHerd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTI_PRODUIRE_BOVIN">
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="1" />
+          <End Role="CattleProduction" Type="Self.CattleProduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cattle">
+              <PropertyRef Name="idCattle" />
+            </Principal>
+            <Dependent Role="CattleProduction">
+              <PropertyRef Name="idCattle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TROUPEAU_ETRE_1_TYPEBOVI">
+          <End Role="CattleType" Type="Self.CattleType" Multiplicity="1" />
+          <End Role="Herd" Type="Self.Herd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CattleType">
+              <PropertyRef Name="idCattleType" />
+            </Principal>
+            <Dependent Role="Herd">
+              <PropertyRef Name="idCattleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dairyFarmModelStoreContainer">
+          <EntitySet Name="Cattle" EntityType="Self.Cattle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CattleProduction" EntityType="Self.CattleProduction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CattleType" EntityType="Self.CattleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disease" EntityType="Self.Disease" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiseaseHistory" EntityType="Self.DiseaseHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodComsuption" EntityType="Self.FoodComsuption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodStock" EntityType="Self.FoodStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gestation" EntityType="Self.Gestation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HealthStatus" EntityType="Self.HealthStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Herd" EntityType="Self.Herd" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BOVIN_ASSOCIATI_TROUPEAU" Association="Self.FK_BOVIN_ASSOCIATI_TROUPEAU">
+            <End Role="Herd" EntitySet="Herd" />
+            <End Role="Cattle" EntitySet="Cattle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOVIN_ETRE_2_STATUT" Association="Self.FK_BOVIN_ETRE_2_STATUT">
+            <End Role="HealthStatus" EntitySet="HealthStatus" />
+            <End Role="Cattle" EntitySet="Cattle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOVIN_POSSEDE_TYPEBOVI" Association="Self.FK_BOVIN_POSSEDE_TYPEBOVI">
+            <End Role="CattleType" EntitySet="CattleType" />
+            <End Role="Cattle" EntitySet="Cattle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GESTATIO_AVOIR_BOVIN" Association="Self.FK_GESTATIO_AVOIR_BOVIN">
+            <End Role="Cattle" EntitySet="Cattle" />
+            <End Role="Gestation" EntitySet="Gestation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORIQ_HISTORIQU_BOVIN" Association="Self.FK_HISTORIQ_HISTORIQU_BOVIN">
+            <End Role="Cattle" EntitySet="Cattle" />
+            <End Role="DiseaseHistory" EntitySet="DiseaseHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORIQ_HISTORIQU_MALADIE" Association="Self.FK_HISTORIQ_HISTORIQU_MALADIE">
+            <End Role="Disease" EntitySet="Disease" />
+            <End Role="DiseaseHistory" EntitySet="DiseaseHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOURRITU_NOURRITUR_STOCK_NO" Association="Self.FK_NOURRITU_NOURRITUR_STOCK_NO">
+            <End Role="FoodStock" EntitySet="FoodStock" />
+            <End Role="FoodComsuption" EntitySet="FoodComsuption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOURRITU_NOURRITUR_TROUPEAU" Association="Self.FK_NOURRITU_NOURRITUR_TROUPEAU">
+            <End Role="Herd" EntitySet="Herd" />
+            <End Role="FoodComsuption" EntitySet="FoodComsuption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTI_PRODUIRE_BOVIN" Association="Self.FK_PRODUCTI_PRODUIRE_BOVIN">
+            <End Role="Cattle" EntitySet="Cattle" />
+            <End Role="CattleProduction" EntitySet="CattleProduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TROUPEAU_ETRE_1_TYPEBOVI" Association="Self.FK_TROUPEAU_ETRE_1_TYPEBOVI">
+            <End Role="CattleType" EntitySet="CattleType" />
+            <End Role="Herd" EntitySet="Herd" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dairyFarmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cattle">
+          <Key>
+            <PropertyRef Name="idCattle" />
+          </Key>
+          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCattleType" Type="Int32" Nullable="false" />
+          <Property Name="idHerd" Type="Int32" Nullable="false" />
+          <Property Name="idStatut" Type="Int32" Nullable="false" />
+          <Property Name="ative" Type="Int32" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="malParent" Type="Int32" />
+          <Property Name="femaleParent" Type="Int32" />
+          <Property Name="sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Herd" Relationship="Self.FK_BOVIN_ASSOCIATI_TROUPEAU" FromRole="Cattle" ToRole="Herd" />
+          <NavigationProperty Name="HealthStatu" Relationship="Self.FK_BOVIN_ETRE_2_STATUT" FromRole="Cattle" ToRole="HealthStatus" />
+          <NavigationProperty Name="CattleType" Relationship="Self.FK_BOVIN_POSSEDE_TYPEBOVI" FromRole="Cattle" ToRole="CattleType" />
+          <NavigationProperty Name="Gestations" Relationship="Self.FK_GESTATIO_AVOIR_BOVIN" FromRole="Cattle" ToRole="Gestation" />
+          <NavigationProperty Name="DiseaseHistories" Relationship="Self.FK_HISTORIQ_HISTORIQU_BOVIN" FromRole="Cattle" ToRole="DiseaseHistory" />
+          <NavigationProperty Name="CattleProductions" Relationship="Self.FK_PRODUCTI_PRODUIRE_BOVIN" FromRole="Cattle" ToRole="CattleProduction" />
+        </EntityType>
+        <EntityType Name="CattleProduction">
+          <Key>
+            <PropertyRef Name="idCattleProduction" />
+          </Key>
+          <Property Name="idCattleProduction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateProd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hourProd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantityProd" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Cattle" Relationship="Self.FK_PRODUCTI_PRODUIRE_BOVIN" FromRole="CattleProduction" ToRole="Cattle" />
+        </EntityType>
+        <EntityType Name="CattleType">
+          <Key>
+            <PropertyRef Name="idCattleType" />
+          </Key>
+          <Property Name="idCattleType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cattle" Relationship="Self.FK_BOVIN_POSSEDE_TYPEBOVI" FromRole="CattleType" ToRole="Cattle" />
+          <NavigationProperty Name="Herds" Relationship="Self.FK_TROUPEAU_ETRE_1_TYPEBOVI" FromRole="CattleType" ToRole="Herd" />
+        </EntityType>
+        <EntityType Name="Disease">
+          <Key>
+            <PropertyRef Name="idDisease" />
+          </Key>
+          <Property Name="idDisease" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contagious" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DiseaseHistories" Relationship="Self.FK_HISTORIQ_HISTORIQU_MALADIE" FromRole="Disease" ToRole="DiseaseHistory" />
+        </EntityType>
+        <EntityType Name="DiseaseHistory">
+          <Key>
+            <PropertyRef Name="idCattle" />
+            <PropertyRef Name="idDisease" />
+          </Key>
+          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idDisease" Type="Int32" Nullable="false" />
+          <Property Name="startSick" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="endSick" Type="DateTime" Precision="3" />
+          <Property Name="veterinaryVisit" Type="Boolean" />
+          <NavigationProperty Name="Cattle" Relationship="Self.FK_HISTORIQ_HISTORIQU_BOVIN" FromRole="DiseaseHistory" ToRole="Cattle" />
+          <NavigationProperty Name="Disease" Relationship="Self.FK_HISTORIQ_HISTORIQU_MALADIE" FromRole="DiseaseHistory" ToRole="Disease" />
+        </EntityType>
+        <EntityType Name="FoodComsuption">
+          <Key>
+            <PropertyRef Name="idFood" />
+            <PropertyRef Name="idHerd" />
+          </Key>
+          <Property Name="idFood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idHerd" Type="Int32" Nullable="false" />
+          <Property Name="dateCons" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hourCons" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="quantityCons" Type="Double" Nullable="false" />
+          <NavigationProperty Name="FoodStock" Relationship="Self.FK_NOURRITU_NOURRITUR_STOCK_NO" FromRole="FoodComsuption" ToRole="FoodStock" />
+          <NavigationProperty Name="Herd" Relationship="Self.FK_NOURRITU_NOURRITUR_TROUPEAU" FromRole="FoodComsuption" ToRole="Herd" />
+        </EntityType>
+        <EntityType Name="FoodStock">
+          <Key>
+            <PropertyRef Name="idFood" />
+          </Key>
+          <Property Name="idFood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantityFood" Type="Double" Nullable="false" />
+          <Property Name="foodName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FoodComsuptions" Relationship="Self.FK_NOURRITU_NOURRITUR_STOCK_NO" FromRole="FoodStock" ToRole="FoodComsuption" />
+        </EntityType>
+        <EntityType Name="Gestation">
+          <Key>
+            <PropertyRef Name="idGestation" />
+          </Key>
+          <Property Name="idGestation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateBeginGest" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateEnd" Type="DateTime" Precision="3" />
+          <Property Name="dateCalve" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="calveSex" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="comment" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cattle" Relationship="Self.FK_GESTATIO_AVOIR_BOVIN" FromRole="Gestation" ToRole="Cattle" />
+        </EntityType>
+        <EntityType Name="HealthStatu">
+          <Key>
+            <PropertyRef Name="idStatus" />
+          </Key>
+          <Property Name="idStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="statusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cattle" Relationship="Self.FK_BOVIN_ETRE_2_STATUT" FromRole="HealthStatus" ToRole="Cattle" />
+        </EntityType>
+        <EntityType Name="Herd">
+          <Key>
+            <PropertyRef Name="idHerd" />
+          </Key>
+          <Property Name="idHerd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCattleType" Type="Int32" Nullable="false" />
+          <Property Name="maxCows" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cattle" Relationship="Self.FK_BOVIN_ASSOCIATI_TROUPEAU" FromRole="Herd" ToRole="Cattle" />
+          <NavigationProperty Name="CattleType" Relationship="Self.FK_TROUPEAU_ETRE_1_TYPEBOVI" FromRole="Herd" ToRole="CattleType" />
+          <NavigationProperty Name="FoodComsuptions" Relationship="Self.FK_NOURRITU_NOURRITUR_TROUPEAU" FromRole="Herd" ToRole="FoodComsuption" />
+        </EntityType>
+        <Association Name="FK_BOVIN_ASSOCIATI_TROUPEAU">
+          <End Role="Herd" Type="Self.Herd" Multiplicity="1" />
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Herd">
+              <PropertyRef Name="idHerd" />
+            </Principal>
+            <Dependent Role="Cattle">
+              <PropertyRef Name="idHerd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOVIN_ETRE_2_STATUT">
+          <End Role="HealthStatus" Type="Self.HealthStatu" Multiplicity="1" />
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthStatus">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="Cattle">
+              <PropertyRef Name="idStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BOVIN_POSSEDE_TYPEBOVI">
+          <End Role="CattleType" Type="Self.CattleType" Multiplicity="1" />
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CattleType">
+              <PropertyRef Name="idCattleType" />
+            </Principal>
+            <Dependent Role="Cattle">
+              <PropertyRef Name="idCattleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GESTATIO_AVOIR_BOVIN">
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="1" />
+          <End Role="Gestation" Type="Self.Gestation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cattle">
+              <PropertyRef Name="idCattle" />
+            </Principal>
+            <Dependent Role="Gestation">
+              <PropertyRef Name="idCattle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORIQ_HISTORIQU_BOVIN">
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="1" />
+          <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cattle">
+              <PropertyRef Name="idCattle" />
+            </Principal>
+            <Dependent Role="DiseaseHistory">
+              <PropertyRef Name="idCattle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTI_PRODUIRE_BOVIN">
+          <End Role="Cattle" Type="Self.Cattle" Multiplicity="1" />
+          <End Role="CattleProduction" Type="Self.CattleProduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cattle">
+              <PropertyRef Name="idCattle" />
+            </Principal>
+            <Dependent Role="CattleProduction">
+              <PropertyRef Name="idCattle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TROUPEAU_ETRE_1_TYPEBOVI">
+          <End Role="CattleType" Type="Self.CattleType" Multiplicity="1" />
+          <End Role="Herd" Type="Self.Herd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CattleType">
+              <PropertyRef Name="idCattleType" />
+            </Principal>
+            <Dependent Role="Herd">
+              <PropertyRef Name="idCattleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORIQ_HISTORIQU_MALADIE">
+          <End Role="Disease" Type="Self.Disease" Multiplicity="1" />
+          <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Disease">
+              <PropertyRef Name="idDisease" />
+            </Principal>
+            <Dependent Role="DiseaseHistory">
+              <PropertyRef Name="idDisease" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOURRITU_NOURRITUR_STOCK_NO">
+          <End Role="FoodStock" Type="Self.FoodStock" Multiplicity="1" />
+          <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FoodStock">
+              <PropertyRef Name="idFood" />
+            </Principal>
+            <Dependent Role="FoodComsuption">
+              <PropertyRef Name="idFood" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOURRITU_NOURRITUR_TROUPEAU">
+          <End Role="Herd" Type="Self.Herd" Multiplicity="1" />
+          <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Herd">
+              <PropertyRef Name="idHerd" />
+            </Principal>
+            <Dependent Role="FoodComsuption">
+              <PropertyRef Name="idHerd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dairyFarmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cattle" EntityType="Self.Cattle" />
+          <EntitySet Name="CattleProductions" EntityType="Self.CattleProduction" />
+          <EntitySet Name="CattleTypes" EntityType="Self.CattleType" />
+          <EntitySet Name="Diseases" EntityType="Self.Disease" />
+          <EntitySet Name="DiseaseHistories" EntityType="Self.DiseaseHistory" />
+          <EntitySet Name="FoodComsuptions" EntityType="Self.FoodComsuption" />
+          <EntitySet Name="FoodStocks" EntityType="Self.FoodStock" />
+          <EntitySet Name="Gestations" EntityType="Self.Gestation" />
+          <EntitySet Name="HealthStatus" EntityType="Self.HealthStatu" />
+          <EntitySet Name="Herds" EntityType="Self.Herd" />
+          <AssociationSet Name="FK_BOVIN_ASSOCIATI_TROUPEAU" Association="Self.FK_BOVIN_ASSOCIATI_TROUPEAU">
+            <End Role="Herd" EntitySet="Herds" />
+            <End Role="Cattle" EntitySet="Cattle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOVIN_ETRE_2_STATUT" Association="Self.FK_BOVIN_ETRE_2_STATUT">
+            <End Role="HealthStatus" EntitySet="HealthStatus" />
+            <End Role="Cattle" EntitySet="Cattle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOVIN_POSSEDE_TYPEBOVI" Association="Self.FK_BOVIN_POSSEDE_TYPEBOVI">
+            <End Role="CattleType" EntitySet="CattleTypes" />
+            <End Role="Cattle" EntitySet="Cattle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GESTATIO_AVOIR_BOVIN" Association="Self.FK_GESTATIO_AVOIR_BOVIN">
+            <End Role="Cattle" EntitySet="Cattle" />
+            <End Role="Gestation" EntitySet="Gestations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORIQ_HISTORIQU_BOVIN" Association="Self.FK_HISTORIQ_HISTORIQU_BOVIN">
+            <End Role="Cattle" EntitySet="Cattle" />
+            <End Role="DiseaseHistory" EntitySet="DiseaseHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTI_PRODUIRE_BOVIN" Association="Self.FK_PRODUCTI_PRODUIRE_BOVIN">
+            <End Role="Cattle" EntitySet="Cattle" />
+            <End Role="CattleProduction" EntitySet="CattleProductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TROUPEAU_ETRE_1_TYPEBOVI" Association="Self.FK_TROUPEAU_ETRE_1_TYPEBOVI">
+            <End Role="CattleType" EntitySet="CattleTypes" />
+            <End Role="Herd" EntitySet="Herds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORIQ_HISTORIQU_MALADIE" Association="Self.FK_HISTORIQ_HISTORIQU_MALADIE">
+            <End Role="Disease" EntitySet="Diseases" />
+            <End Role="DiseaseHistory" EntitySet="DiseaseHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOURRITU_NOURRITUR_STOCK_NO" Association="Self.FK_NOURRITU_NOURRITUR_STOCK_NO">
+            <End Role="FoodStock" EntitySet="FoodStocks" />
+            <End Role="FoodComsuption" EntitySet="FoodComsuptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOURRITU_NOURRITUR_TROUPEAU" Association="Self.FK_NOURRITU_NOURRITUR_TROUPEAU">
+            <End Role="Herd" EntitySet="Herds" />
+            <End Role="FoodComsuption" EntitySet="FoodComsuptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dairyFarmModelStoreContainer" CdmEntityContainer="dairyFarmEntities">
+          <EntitySetMapping Name="Cattle">
+            <EntityTypeMapping TypeName="dairyFarmModel.Cattle">
+              <MappingFragment StoreEntitySet="Cattle">
+                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
+                <ScalarProperty Name="idCattleType" ColumnName="idCattleType" />
+                <ScalarProperty Name="idHerd" ColumnName="idHerd" />
+                <ScalarProperty Name="idStatut" ColumnName="idStatut" />
+                <ScalarProperty Name="ative" ColumnName="ative" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="malParent" ColumnName="malParent" />
+                <ScalarProperty Name="femaleParent" ColumnName="femaleParent" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CattleProductions">
+            <EntityTypeMapping TypeName="dairyFarmModel.CattleProduction">
+              <MappingFragment StoreEntitySet="CattleProduction">
+                <ScalarProperty Name="idCattleProduction" ColumnName="idCattleProduction" />
+                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
+                <ScalarProperty Name="dateProd" ColumnName="dateProd" />
+                <ScalarProperty Name="hourProd" ColumnName="hourProd" />
+                <ScalarProperty Name="quantityProd" ColumnName="quantityProd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CattleTypes">
+            <EntityTypeMapping TypeName="dairyFarmModel.CattleType">
+              <MappingFragment StoreEntitySet="CattleType">
+                <ScalarProperty Name="idCattleType" ColumnName="idCattleType" />
+                <ScalarProperty Name="typeName" ColumnName="typeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diseases">
+            <EntityTypeMapping TypeName="dairyFarmModel.Disease">
+              <MappingFragment StoreEntitySet="Disease">
+                <ScalarProperty Name="idDisease" ColumnName="idDisease" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="contagious" ColumnName="contagious" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiseaseHistories">
+            <EntityTypeMapping TypeName="dairyFarmModel.DiseaseHistory">
+              <MappingFragment StoreEntitySet="DiseaseHistory">
+                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
+                <ScalarProperty Name="idDisease" ColumnName="idDisease" />
+                <ScalarProperty Name="startSick" ColumnName="startSick" />
+                <ScalarProperty Name="endSick" ColumnName="endSick" />
+                <ScalarProperty Name="veterinaryVisit" ColumnName="veterinaryVisit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodComsuptions">
+            <EntityTypeMapping TypeName="dairyFarmModel.FoodComsuption">
+              <MappingFragment StoreEntitySet="FoodComsuption">
+                <ScalarProperty Name="idFood" ColumnName="idFood" />
+                <ScalarProperty Name="idHerd" ColumnName="idHerd" />
+                <ScalarProperty Name="dateCons" ColumnName="dateCons" />
+                <ScalarProperty Name="hourCons" ColumnName="hourCons" />
+                <ScalarProperty Name="quantityCons" ColumnName="quantityCons" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodStocks">
+            <EntityTypeMapping TypeName="dairyFarmModel.FoodStock">
+              <MappingFragment StoreEntitySet="FoodStock">
+                <ScalarProperty Name="idFood" ColumnName="idFood" />
+                <ScalarProperty Name="quantityFood" ColumnName="quantityFood" />
+                <ScalarProperty Name="foodName" ColumnName="foodName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gestations">
+            <EntityTypeMapping TypeName="dairyFarmModel.Gestation">
+              <MappingFragment StoreEntitySet="Gestation">
+                <ScalarProperty Name="idGestation" ColumnName="idGestation" />
+                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
+                <ScalarProperty Name="dateBeginGest" ColumnName="dateBeginGest" />
+                <ScalarProperty Name="dateEnd" ColumnName="dateEnd" />
+                <ScalarProperty Name="dateCalve" ColumnName="dateCalve" />
+                <ScalarProperty Name="calveSex" ColumnName="calveSex" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HealthStatus">
+            <EntityTypeMapping TypeName="dairyFarmModel.HealthStatu">
+              <MappingFragment StoreEntitySet="HealthStatus">
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
+                <ScalarProperty Name="statusName" ColumnName="statusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Herds">
+            <EntityTypeMapping TypeName="dairyFarmModel.Herd">
+              <MappingFragment StoreEntitySet="Herd">
+                <ScalarProperty Name="idHerd" ColumnName="idHerd" />
+                <ScalarProperty Name="idCattleType" ColumnName="idCattleType" />
+                <ScalarProperty Name="maxCows" ColumnName="maxCows" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

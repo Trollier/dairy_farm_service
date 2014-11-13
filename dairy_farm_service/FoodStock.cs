@@ -12,20 +12,17 @@ namespace dairy_farm_service
     using System;
     using System.Collections.Generic;
     
-    public partial class TROUPEAU
+    public partial class FoodStock
     {
-        public TROUPEAU()
+        public FoodStock()
         {
-            this.BOVIN = new HashSet<BOVIN>();
-            this.NOURRITURE_CONSOMMER = new HashSet<NOURRITURE_CONSOMMER>();
+            this.FoodComsuptions = new HashSet<FoodComsuption>();
         }
     
-        public int IDTROUPEAU { get; set; }
-        public int IDTYPEBOVIN { get; set; }
-        public int MAXBETES { get; set; }
+        public int idFood { get; set; }
+        public double quantityFood { get; set; }
+        public string foodName { get; set; }
     
-        public virtual ICollection<BOVIN> BOVIN { get; set; }
-        public virtual ICollection<NOURRITURE_CONSOMMER> NOURRITURE_CONSOMMER { get; set; }
-        public virtual TYPEBOVINS TYPEBOVINS { get; set; }
+        public virtual ICollection<FoodComsuption> FoodComsuptions { get; set; }
     }
 }

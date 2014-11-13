@@ -12,16 +12,18 @@ namespace dairy_farm_service
     using System;
     using System.Collections.Generic;
     
-    public partial class STATUT
+    public partial class CattleType
     {
-        public STATUT()
+        public CattleType()
         {
-            this.BOVIN = new HashSet<BOVIN>();
+            this.Cattle = new HashSet<Cattle>();
+            this.Herds = new HashSet<Herd>();
         }
     
-        public int ID_STATUT { get; set; }
-        public string NAME { get; set; }
+        public int idCattleType { get; set; }
+        public string typeName { get; set; }
     
-        public virtual ICollection<BOVIN> BOVIN { get; set; }
+        public virtual ICollection<Cattle> Cattle { get; set; }
+        public virtual ICollection<Herd> Herds { get; set; }
     }
 }
