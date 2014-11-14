@@ -20,9 +20,9 @@ namespace dairy_farm_service
             this.FoodComsuptions = new HashSet<FoodComsuption>();
         }
     
-        public int idHerd { get; set; }
-        public int idCattleType { get; set; }
-        public int maxCows { get; set; }
+        public int IdHerd { get; set; }
+        public int IdCattleType { get; set; }
+        public int MaxCows { get; set; }
     
         public virtual ICollection<Cattle> Cattle { get; set; }
         public virtual CattleType CattleType { get; set; }

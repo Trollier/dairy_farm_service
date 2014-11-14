@@ -19,9 +19,9 @@ namespace dairy_farm_service
             this.DiseaseHistories = new HashSet<DiseaseHistory>();
         }
     
-        public int idDisease { get; set; }
-        public string name { get; set; }
-        public bool contagious { get; set; }
+        public int IdDisease { get; set; }
+        public string Name { get; set; }
+        public bool Contagious { get; set; }
     
         public virtual ICollection<DiseaseHistory> DiseaseHistories { get; set; }
     }

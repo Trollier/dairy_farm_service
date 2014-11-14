@@ -14,13 +14,13 @@ namespace dairy_farm_service
     
     public partial class Gestation
     {
-        public int idGestation { get; set; }
-        public string idCattle { get; set; }
-        public System.DateTime dateBeginGest { get; set; }
-        public Nullable<System.DateTime> dateEnd { get; set; }
-        public System.DateTime dateCalve { get; set; }
-        public string calveSex { get; set; }
-        public string comment { get; set; }
+        public int IdGestation { get; set; }
+        public string IdCattle { get; set; }
+        public System.DateTime DateBeginGest { get; set; }
+        public Nullable<System.DateTime> DateEnd { get; set; }
+        public System.DateTime DateCalve { get; set; }
+        public string CalveSex { get; set; }
+        public string Comment { get; set; }
     
         public virtual Cattle Cattle { get; set; }
     }

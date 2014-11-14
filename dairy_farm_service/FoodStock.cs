@@ -19,9 +19,9 @@ namespace dairy_farm_service
             this.FoodComsuptions = new HashSet<FoodComsuption>();
         }
     
-        public int idFood { get; set; }
-        public double quantityFood { get; set; }
-        public string foodName { get; set; }
+        public int IdFood { get; set; }
+        public double QuantityFood { get; set; }
+        public string FoodName { get; set; }
     
         public virtual ICollection<FoodComsuption> FoodComsuptions { get; set; }
     }

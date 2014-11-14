@@ -21,15 +21,15 @@ namespace dairy_farm_service
             this.CattleProductions = new HashSet<CattleProduction>();
         }
     
-        public string idCattle { get; set; }
-        public int idCattleType { get; set; }
-        public int idHerd { get; set; }
-        public int idStatut { get; set; }
-        public int ative { get; set; }
-        public int age { get; set; }
-        public Nullable<int> malParent { get; set; }
-        public Nullable<int> femaleParent { get; set; }
-        public string sex { get; set; }
+        public string IdCattle { get; set; }
+        public int IdCattleType { get; set; }
+        public int IdHerd { get; set; }
+        public int IdStatut { get; set; }
+        public int Active { get; set; }
+        public int Age { get; set; }
+        public Nullable<int> MalParent { get; set; }
+        public Nullable<int> FemaleParent { get; set; }
+        public string CalveSex { get; set; }
     
         public virtual Herd Herd { get; set; }
         public virtual HealthStatu HealthStatu { get; set; }

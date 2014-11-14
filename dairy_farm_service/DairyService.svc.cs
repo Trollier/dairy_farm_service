@@ -9,11 +9,8 @@ using System.Text;
 namespace dairy_farm_service
 {
     
-    [ServiceContract]
-    public interface IService1
+    public class DairyService : IDairyService
     {
-        //operation crud sur les tables 
+       
     }
-
-    
 }

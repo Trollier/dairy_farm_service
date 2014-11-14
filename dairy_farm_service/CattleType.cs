@@ -20,8 +20,8 @@ namespace dairy_farm_service
             this.Herds = new HashSet<Herd>();
         }
     
-        public int idCattleType { get; set; }
-        public string typeName { get; set; }
+        public int IdCattleType { get; set; }
+        public string TypeName { get; set; }
     
         public virtual ICollection<Cattle> Cattle { get; set; }
         public virtual ICollection<Herd> Herds { get; set; }

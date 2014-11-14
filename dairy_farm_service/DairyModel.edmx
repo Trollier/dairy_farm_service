@@ -4,112 +4,112 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dairyFarmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dairyFarmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cattle">
           <Key>
-            <PropertyRef Name="idCattle" />
+            <PropertyRef Name="IdCattle" />
           </Key>
-          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="idCattleType" Type="int" Nullable="false" />
-          <Property Name="idHerd" Type="int" Nullable="false" />
-          <Property Name="idStatut" Type="int" Nullable="false" />
-          <Property Name="ative" Type="int" Nullable="false" />
-          <Property Name="age" Type="int" Nullable="false" />
-          <Property Name="malParent" Type="int" />
-          <Property Name="femaleParent" Type="int" />
-          <Property Name="sex" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="IdCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="IdCattleType" Type="int" Nullable="false" />
+          <Property Name="IdHerd" Type="int" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="MalParent" Type="int" />
+          <Property Name="FemaleParent" Type="int" />
+          <Property Name="CalveSex" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="CattleProduction">
           <Key>
-            <PropertyRef Name="idCattleProduction" />
+            <PropertyRef Name="IdCattleProduction" />
           </Key>
-          <Property Name="idCattleProduction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="dateProd" Type="datetime" Nullable="false" />
-          <Property Name="hourProd" Type="datetime" Nullable="false" />
-          <Property Name="quantityProd" Type="float" Nullable="false" />
+          <Property Name="IdCattleProduction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="DateProd" Type="datetime" Nullable="false" />
+          <Property Name="HourProd" Type="datetime" Nullable="false" />
+          <Property Name="QuantityProd" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="CattleType">
           <Key>
-            <PropertyRef Name="idCattleType" />
+            <PropertyRef Name="IdCattleType" />
           </Key>
-          <Property Name="idCattleType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="typeName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdCattleType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Disease">
           <Key>
-            <PropertyRef Name="idDisease" />
+            <PropertyRef Name="IdDisease" />
           </Key>
-          <Property Name="idDisease" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="contagious" Type="bit" Nullable="false" />
+          <Property Name="IdDisease" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contagious" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="DiseaseHistory">
           <Key>
-            <PropertyRef Name="idCattle" />
-            <PropertyRef Name="idDisease" />
+            <PropertyRef Name="IdCattle" />
+            <PropertyRef Name="IdDisease" />
           </Key>
-          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="idDisease" Type="int" Nullable="false" />
-          <Property Name="startSick" Type="datetime" Nullable="false" />
-          <Property Name="endSick" Type="datetime" />
-          <Property Name="veterinaryVisit" Type="bit" />
+          <Property Name="IdCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="IdDisease" Type="int" Nullable="false" />
+          <Property Name="StartSick" Type="datetime" Nullable="false" />
+          <Property Name="EndSick" Type="datetime" />
+          <Property Name="VeterinaryVisit" Type="bit" />
         </EntityType>
         <EntityType Name="FoodComsuption">
           <Key>
-            <PropertyRef Name="idFood" />
-            <PropertyRef Name="idHerd" />
+            <PropertyRef Name="IdFood" />
+            <PropertyRef Name="IdHerd" />
           </Key>
-          <Property Name="idFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idHerd" Type="int" Nullable="false" />
-          <Property Name="dateCons" Type="datetime" Nullable="false" />
-          <Property Name="hourCons" Type="datetime" Nullable="false" />
-          <Property Name="quantityCons" Type="float" Nullable="false" />
+          <Property Name="IdFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdHerd" Type="int" Nullable="false" />
+          <Property Name="DateCons" Type="datetime" Nullable="false" />
+          <Property Name="HourCons" Type="datetime" Nullable="false" />
+          <Property Name="QuantityCons" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="FoodStock">
           <Key>
-            <PropertyRef Name="idFood" />
+            <PropertyRef Name="IdFood" />
           </Key>
-          <Property Name="idFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="quantityFood" Type="float" Nullable="false" />
-          <Property Name="foodName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdFood" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuantityFood" Type="float" Nullable="false" />
+          <Property Name="FoodName" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Gestation">
           <Key>
-            <PropertyRef Name="idGestation" />
+            <PropertyRef Name="IdGestation" />
           </Key>
-          <Property Name="idGestation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idCattle" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="dateBeginGest" Type="datetime" Nullable="false" />
-          <Property Name="dateEnd" Type="datetime" />
-          <Property Name="dateCalve" Type="datetime" Nullable="false" />
-          <Property Name="calveSex" Type="varchar" MaxLength="7" Nullable="false" />
-          <Property Name="comment" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="IdGestation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCattle" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="DateBeginGest" Type="datetime" Nullable="false" />
+          <Property Name="DateEnd" Type="datetime" />
+          <Property Name="DateCalve" Type="datetime" Nullable="false" />
+          <Property Name="CalveSex" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="HealthStatus">
           <Key>
-            <PropertyRef Name="idStatus" />
+            <PropertyRef Name="IdStatus" />
           </Key>
-          <Property Name="idStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="statusName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IdStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Herd">
           <Key>
-            <PropertyRef Name="idHerd" />
+            <PropertyRef Name="IdHerd" />
           </Key>
-          <Property Name="idHerd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idCattleType" Type="int" Nullable="false" />
-          <Property Name="maxCows" Type="int" Nullable="false" />
+          <Property Name="IdHerd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCattleType" Type="int" Nullable="false" />
+          <Property Name="MaxCows" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_BOVIN_ASSOCIATI_TROUPEAU">
           <End Role="Herd" Type="Self.Herd" Multiplicity="1" />
           <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Herd">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Principal>
             <Dependent Role="Cattle">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -118,10 +118,10 @@
           <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HealthStatus">
-              <PropertyRef Name="idStatus" />
+              <PropertyRef Name="IdStatus" />
             </Principal>
             <Dependent Role="Cattle">
-              <PropertyRef Name="idStatut" />
+              <PropertyRef Name="IdStatut" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -130,10 +130,10 @@
           <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CattleType">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Principal>
             <Dependent Role="Cattle">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -142,10 +142,10 @@
           <End Role="Gestation" Type="Self.Gestation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cattle">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Principal>
             <Dependent Role="Gestation">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -154,10 +154,10 @@
           <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cattle">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Principal>
             <Dependent Role="DiseaseHistory">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -166,10 +166,10 @@
           <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Disease">
-              <PropertyRef Name="idDisease" />
+              <PropertyRef Name="IdDisease" />
             </Principal>
             <Dependent Role="DiseaseHistory">
-              <PropertyRef Name="idDisease" />
+              <PropertyRef Name="IdDisease" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,10 +178,10 @@
           <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FoodStock">
-              <PropertyRef Name="idFood" />
+              <PropertyRef Name="IdFood" />
             </Principal>
             <Dependent Role="FoodComsuption">
-              <PropertyRef Name="idFood" />
+              <PropertyRef Name="IdFood" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,10 +190,10 @@
           <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Herd">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Principal>
             <Dependent Role="FoodComsuption">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -202,10 +202,10 @@
           <End Role="CattleProduction" Type="Self.CattleProduction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cattle">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Principal>
             <Dependent Role="CattleProduction">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -214,10 +214,10 @@
           <End Role="Herd" Type="Self.Herd" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CattleType">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Principal>
             <Dependent Role="Herd">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -273,24 +273,23 @@
             <End Role="Herd" EntitySet="Herd" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dairyFarmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cattle">
           <Key>
-            <PropertyRef Name="idCattle" />
+            <PropertyRef Name="IdCattle" />
           </Key>
-          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idCattleType" Type="Int32" Nullable="false" />
-          <Property Name="idHerd" Type="Int32" Nullable="false" />
-          <Property Name="idStatut" Type="Int32" Nullable="false" />
-          <Property Name="ative" Type="Int32" Nullable="false" />
-          <Property Name="age" Type="Int32" Nullable="false" />
-          <Property Name="malParent" Type="Int32" />
-          <Property Name="femaleParent" Type="Int32" />
-          <Property Name="sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IdCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdCattleType" Type="Int32" Nullable="false" />
+          <Property Name="IdHerd" Type="Int32" Nullable="false" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="MalParent" Type="Int32" />
+          <Property Name="FemaleParent" Type="Int32" />
+          <Property Name="CalveSex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Herd" Relationship="Self.FK_BOVIN_ASSOCIATI_TROUPEAU" FromRole="Cattle" ToRole="Herd" />
           <NavigationProperty Name="HealthStatu" Relationship="Self.FK_BOVIN_ETRE_2_STATUT" FromRole="Cattle" ToRole="HealthStatus" />
           <NavigationProperty Name="CattleType" Relationship="Self.FK_BOVIN_POSSEDE_TYPEBOVI" FromRole="Cattle" ToRole="CattleType" />
@@ -300,96 +299,96 @@
         </EntityType>
         <EntityType Name="CattleProduction">
           <Key>
-            <PropertyRef Name="idCattleProduction" />
+            <PropertyRef Name="IdCattleProduction" />
           </Key>
-          <Property Name="idCattleProduction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dateProd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="hourProd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="quantityProd" Type="Double" Nullable="false" />
+          <Property Name="IdCattleProduction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateProd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HourProd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QuantityProd" Type="Double" Nullable="false" />
           <NavigationProperty Name="Cattle" Relationship="Self.FK_PRODUCTI_PRODUIRE_BOVIN" FromRole="CattleProduction" ToRole="Cattle" />
         </EntityType>
         <EntityType Name="CattleType">
           <Key>
-            <PropertyRef Name="idCattleType" />
+            <PropertyRef Name="IdCattleType" />
           </Key>
-          <Property Name="idCattleType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="typeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdCattleType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cattle" Relationship="Self.FK_BOVIN_POSSEDE_TYPEBOVI" FromRole="CattleType" ToRole="Cattle" />
           <NavigationProperty Name="Herds" Relationship="Self.FK_TROUPEAU_ETRE_1_TYPEBOVI" FromRole="CattleType" ToRole="Herd" />
         </EntityType>
         <EntityType Name="Disease">
           <Key>
-            <PropertyRef Name="idDisease" />
+            <PropertyRef Name="IdDisease" />
           </Key>
-          <Property Name="idDisease" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="contagious" Type="Boolean" Nullable="false" />
+          <Property Name="IdDisease" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contagious" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="DiseaseHistories" Relationship="Self.FK_HISTORIQ_HISTORIQU_MALADIE" FromRole="Disease" ToRole="DiseaseHistory" />
         </EntityType>
         <EntityType Name="DiseaseHistory">
           <Key>
-            <PropertyRef Name="idCattle" />
-            <PropertyRef Name="idDisease" />
+            <PropertyRef Name="IdCattle" />
+            <PropertyRef Name="IdDisease" />
           </Key>
-          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idDisease" Type="Int32" Nullable="false" />
-          <Property Name="startSick" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="endSick" Type="DateTime" Precision="3" />
-          <Property Name="veterinaryVisit" Type="Boolean" />
+          <Property Name="IdCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdDisease" Type="Int32" Nullable="false" />
+          <Property Name="StartSick" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndSick" Type="DateTime" Precision="3" />
+          <Property Name="VeterinaryVisit" Type="Boolean" />
           <NavigationProperty Name="Cattle" Relationship="Self.FK_HISTORIQ_HISTORIQU_BOVIN" FromRole="DiseaseHistory" ToRole="Cattle" />
           <NavigationProperty Name="Disease" Relationship="Self.FK_HISTORIQ_HISTORIQU_MALADIE" FromRole="DiseaseHistory" ToRole="Disease" />
         </EntityType>
         <EntityType Name="FoodComsuption">
           <Key>
-            <PropertyRef Name="idFood" />
-            <PropertyRef Name="idHerd" />
+            <PropertyRef Name="IdFood" />
+            <PropertyRef Name="IdHerd" />
           </Key>
-          <Property Name="idFood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idHerd" Type="Int32" Nullable="false" />
-          <Property Name="dateCons" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="hourCons" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="quantityCons" Type="Double" Nullable="false" />
+          <Property Name="IdFood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdHerd" Type="Int32" Nullable="false" />
+          <Property Name="DateCons" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HourCons" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QuantityCons" Type="Double" Nullable="false" />
           <NavigationProperty Name="FoodStock" Relationship="Self.FK_NOURRITU_NOURRITUR_STOCK_NO" FromRole="FoodComsuption" ToRole="FoodStock" />
           <NavigationProperty Name="Herd" Relationship="Self.FK_NOURRITU_NOURRITUR_TROUPEAU" FromRole="FoodComsuption" ToRole="Herd" />
         </EntityType>
         <EntityType Name="FoodStock">
           <Key>
-            <PropertyRef Name="idFood" />
+            <PropertyRef Name="IdFood" />
           </Key>
-          <Property Name="idFood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="quantityFood" Type="Double" Nullable="false" />
-          <Property Name="foodName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdFood" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuantityFood" Type="Double" Nullable="false" />
+          <Property Name="FoodName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="FoodComsuptions" Relationship="Self.FK_NOURRITU_NOURRITUR_STOCK_NO" FromRole="FoodStock" ToRole="FoodComsuption" />
         </EntityType>
         <EntityType Name="Gestation">
           <Key>
-            <PropertyRef Name="idGestation" />
+            <PropertyRef Name="IdGestation" />
           </Key>
-          <Property Name="idGestation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dateBeginGest" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dateEnd" Type="DateTime" Precision="3" />
-          <Property Name="dateCalve" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="calveSex" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="comment" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdGestation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCattle" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateBeginGest" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <Property Name="DateCalve" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CalveSex" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cattle" Relationship="Self.FK_GESTATIO_AVOIR_BOVIN" FromRole="Gestation" ToRole="Cattle" />
         </EntityType>
         <EntityType Name="HealthStatu">
           <Key>
-            <PropertyRef Name="idStatus" />
+            <PropertyRef Name="IdStatus" />
           </Key>
-          <Property Name="idStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="statusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cattle" Relationship="Self.FK_BOVIN_ETRE_2_STATUT" FromRole="HealthStatus" ToRole="Cattle" />
         </EntityType>
         <EntityType Name="Herd">
           <Key>
-            <PropertyRef Name="idHerd" />
+            <PropertyRef Name="IdHerd" />
           </Key>
-          <Property Name="idHerd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCattleType" Type="Int32" Nullable="false" />
-          <Property Name="maxCows" Type="Int32" Nullable="false" />
+          <Property Name="IdHerd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCattleType" Type="Int32" Nullable="false" />
+          <Property Name="MaxCows" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cattle" Relationship="Self.FK_BOVIN_ASSOCIATI_TROUPEAU" FromRole="Herd" ToRole="Cattle" />
           <NavigationProperty Name="CattleType" Relationship="Self.FK_TROUPEAU_ETRE_1_TYPEBOVI" FromRole="Herd" ToRole="CattleType" />
           <NavigationProperty Name="FoodComsuptions" Relationship="Self.FK_NOURRITU_NOURRITUR_TROUPEAU" FromRole="Herd" ToRole="FoodComsuption" />
@@ -399,10 +398,10 @@
           <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Herd">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Principal>
             <Dependent Role="Cattle">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -411,10 +410,10 @@
           <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HealthStatus">
-              <PropertyRef Name="idStatus" />
+              <PropertyRef Name="IdStatus" />
             </Principal>
             <Dependent Role="Cattle">
-              <PropertyRef Name="idStatut" />
+              <PropertyRef Name="IdStatut" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -423,10 +422,10 @@
           <End Role="Cattle" Type="Self.Cattle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CattleType">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Principal>
             <Dependent Role="Cattle">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -435,10 +434,10 @@
           <End Role="Gestation" Type="Self.Gestation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cattle">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Principal>
             <Dependent Role="Gestation">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -447,10 +446,10 @@
           <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cattle">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Principal>
             <Dependent Role="DiseaseHistory">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -459,10 +458,10 @@
           <End Role="CattleProduction" Type="Self.CattleProduction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cattle">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Principal>
             <Dependent Role="CattleProduction">
-              <PropertyRef Name="idCattle" />
+              <PropertyRef Name="IdCattle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -471,10 +470,10 @@
           <End Role="Herd" Type="Self.Herd" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CattleType">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Principal>
             <Dependent Role="Herd">
-              <PropertyRef Name="idCattleType" />
+              <PropertyRef Name="IdCattleType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -483,10 +482,10 @@
           <End Role="DiseaseHistory" Type="Self.DiseaseHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Disease">
-              <PropertyRef Name="idDisease" />
+              <PropertyRef Name="IdDisease" />
             </Principal>
             <Dependent Role="DiseaseHistory">
-              <PropertyRef Name="idDisease" />
+              <PropertyRef Name="IdDisease" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -495,10 +494,10 @@
           <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FoodStock">
-              <PropertyRef Name="idFood" />
+              <PropertyRef Name="IdFood" />
             </Principal>
             <Dependent Role="FoodComsuption">
-              <PropertyRef Name="idFood" />
+              <PropertyRef Name="IdFood" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -507,10 +506,10 @@
           <End Role="FoodComsuption" Type="Self.FoodComsuption" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Herd">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Principal>
             <Dependent Role="FoodComsuption">
-              <PropertyRef Name="idHerd" />
+              <PropertyRef Name="IdHerd" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -575,104 +574,104 @@
           <EntitySetMapping Name="Cattle">
             <EntityTypeMapping TypeName="dairyFarmModel.Cattle">
               <MappingFragment StoreEntitySet="Cattle">
-                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
-                <ScalarProperty Name="idCattleType" ColumnName="idCattleType" />
-                <ScalarProperty Name="idHerd" ColumnName="idHerd" />
-                <ScalarProperty Name="idStatut" ColumnName="idStatut" />
-                <ScalarProperty Name="ative" ColumnName="ative" />
-                <ScalarProperty Name="age" ColumnName="age" />
-                <ScalarProperty Name="malParent" ColumnName="malParent" />
-                <ScalarProperty Name="femaleParent" ColumnName="femaleParent" />
-                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="IdCattle" ColumnName="IdCattle" />
+                <ScalarProperty Name="IdCattleType" ColumnName="IdCattleType" />
+                <ScalarProperty Name="IdHerd" ColumnName="IdHerd" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="MalParent" ColumnName="MalParent" />
+                <ScalarProperty Name="FemaleParent" ColumnName="FemaleParent" />
+                <ScalarProperty Name="CalveSex" ColumnName="CalveSex" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CattleProductions">
             <EntityTypeMapping TypeName="dairyFarmModel.CattleProduction">
               <MappingFragment StoreEntitySet="CattleProduction">
-                <ScalarProperty Name="idCattleProduction" ColumnName="idCattleProduction" />
-                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
-                <ScalarProperty Name="dateProd" ColumnName="dateProd" />
-                <ScalarProperty Name="hourProd" ColumnName="hourProd" />
-                <ScalarProperty Name="quantityProd" ColumnName="quantityProd" />
+                <ScalarProperty Name="IdCattleProduction" ColumnName="IdCattleProduction" />
+                <ScalarProperty Name="IdCattle" ColumnName="IdCattle" />
+                <ScalarProperty Name="DateProd" ColumnName="DateProd" />
+                <ScalarProperty Name="HourProd" ColumnName="HourProd" />
+                <ScalarProperty Name="QuantityProd" ColumnName="QuantityProd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CattleTypes">
             <EntityTypeMapping TypeName="dairyFarmModel.CattleType">
               <MappingFragment StoreEntitySet="CattleType">
-                <ScalarProperty Name="idCattleType" ColumnName="idCattleType" />
-                <ScalarProperty Name="typeName" ColumnName="typeName" />
+                <ScalarProperty Name="IdCattleType" ColumnName="IdCattleType" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Diseases">
             <EntityTypeMapping TypeName="dairyFarmModel.Disease">
               <MappingFragment StoreEntitySet="Disease">
-                <ScalarProperty Name="idDisease" ColumnName="idDisease" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="contagious" ColumnName="contagious" />
+                <ScalarProperty Name="IdDisease" ColumnName="IdDisease" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Contagious" ColumnName="Contagious" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DiseaseHistories">
             <EntityTypeMapping TypeName="dairyFarmModel.DiseaseHistory">
               <MappingFragment StoreEntitySet="DiseaseHistory">
-                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
-                <ScalarProperty Name="idDisease" ColumnName="idDisease" />
-                <ScalarProperty Name="startSick" ColumnName="startSick" />
-                <ScalarProperty Name="endSick" ColumnName="endSick" />
-                <ScalarProperty Name="veterinaryVisit" ColumnName="veterinaryVisit" />
+                <ScalarProperty Name="IdCattle" ColumnName="IdCattle" />
+                <ScalarProperty Name="IdDisease" ColumnName="IdDisease" />
+                <ScalarProperty Name="StartSick" ColumnName="StartSick" />
+                <ScalarProperty Name="EndSick" ColumnName="EndSick" />
+                <ScalarProperty Name="VeterinaryVisit" ColumnName="VeterinaryVisit" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FoodComsuptions">
             <EntityTypeMapping TypeName="dairyFarmModel.FoodComsuption">
               <MappingFragment StoreEntitySet="FoodComsuption">
-                <ScalarProperty Name="idFood" ColumnName="idFood" />
-                <ScalarProperty Name="idHerd" ColumnName="idHerd" />
-                <ScalarProperty Name="dateCons" ColumnName="dateCons" />
-                <ScalarProperty Name="hourCons" ColumnName="hourCons" />
-                <ScalarProperty Name="quantityCons" ColumnName="quantityCons" />
+                <ScalarProperty Name="IdFood" ColumnName="IdFood" />
+                <ScalarProperty Name="IdHerd" ColumnName="IdHerd" />
+                <ScalarProperty Name="DateCons" ColumnName="DateCons" />
+                <ScalarProperty Name="HourCons" ColumnName="HourCons" />
+                <ScalarProperty Name="QuantityCons" ColumnName="QuantityCons" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FoodStocks">
             <EntityTypeMapping TypeName="dairyFarmModel.FoodStock">
               <MappingFragment StoreEntitySet="FoodStock">
-                <ScalarProperty Name="idFood" ColumnName="idFood" />
-                <ScalarProperty Name="quantityFood" ColumnName="quantityFood" />
-                <ScalarProperty Name="foodName" ColumnName="foodName" />
+                <ScalarProperty Name="IdFood" ColumnName="IdFood" />
+                <ScalarProperty Name="QuantityFood" ColumnName="QuantityFood" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gestations">
             <EntityTypeMapping TypeName="dairyFarmModel.Gestation">
               <MappingFragment StoreEntitySet="Gestation">
-                <ScalarProperty Name="idGestation" ColumnName="idGestation" />
-                <ScalarProperty Name="idCattle" ColumnName="idCattle" />
-                <ScalarProperty Name="dateBeginGest" ColumnName="dateBeginGest" />
-                <ScalarProperty Name="dateEnd" ColumnName="dateEnd" />
-                <ScalarProperty Name="dateCalve" ColumnName="dateCalve" />
-                <ScalarProperty Name="calveSex" ColumnName="calveSex" />
-                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="IdGestation" ColumnName="IdGestation" />
+                <ScalarProperty Name="IdCattle" ColumnName="IdCattle" />
+                <ScalarProperty Name="DateBeginGest" ColumnName="DateBeginGest" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateCalve" ColumnName="DateCalve" />
+                <ScalarProperty Name="CalveSex" ColumnName="CalveSex" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HealthStatus">
             <EntityTypeMapping TypeName="dairyFarmModel.HealthStatu">
               <MappingFragment StoreEntitySet="HealthStatus">
-                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
-                <ScalarProperty Name="statusName" ColumnName="statusName" />
+                <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Herds">
             <EntityTypeMapping TypeName="dairyFarmModel.Herd">
               <MappingFragment StoreEntitySet="Herd">
-                <ScalarProperty Name="idHerd" ColumnName="idHerd" />
-                <ScalarProperty Name="idCattleType" ColumnName="idCattleType" />
-                <ScalarProperty Name="maxCows" ColumnName="maxCows" />
+                <ScalarProperty Name="IdHerd" ColumnName="IdHerd" />
+                <ScalarProperty Name="IdCattleType" ColumnName="IdCattleType" />
+                <ScalarProperty Name="MaxCows" ColumnName="MaxCows" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

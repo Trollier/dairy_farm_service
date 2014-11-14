@@ -19,8 +19,8 @@ namespace dairy_farm_service
             this.Cattle = new HashSet<Cattle>();
         }
     
-        public int idStatus { get; set; }
-        public string statusName { get; set; }
+        public int IdStatus { get; set; }
+        public string StatusName { get; set; }
     
         public virtual ICollection<Cattle> Cattle { get; set; }
     }

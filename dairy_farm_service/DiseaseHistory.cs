@@ -14,11 +14,11 @@ namespace dairy_farm_service
     
     public partial class DiseaseHistory
     {
-        public string idCattle { get; set; }
-        public int idDisease { get; set; }
-        public System.DateTime startSick { get; set; }
-        public Nullable<System.DateTime> endSick { get; set; }
-        public Nullable<bool> veterinaryVisit { get; set; }
+        public string IdCattle { get; set; }
+        public int IdDisease { get; set; }
+        public System.DateTime StartSick { get; set; }
+        public Nullable<System.DateTime> EndSick { get; set; }
+        public Nullable<bool> VeterinaryVisit { get; set; }
     
         public virtual Cattle Cattle { get; set; }
         public virtual Disease Disease { get; set; }

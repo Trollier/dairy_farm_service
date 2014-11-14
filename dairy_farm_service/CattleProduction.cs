@@ -14,11 +14,11 @@ namespace dairy_farm_service
     
     public partial class CattleProduction
     {
-        public int idCattleProduction { get; set; }
-        public string idCattle { get; set; }
-        public System.DateTime dateProd { get; set; }
-        public System.DateTime hourProd { get; set; }
-        public double quantityProd { get; set; }
+        public int IdCattleProduction { get; set; }
+        public string IdCattle { get; set; }
+        public System.DateTime DateProd { get; set; }
+        public System.DateTime HourProd { get; set; }
+        public double QuantityProd { get; set; }
     
         public virtual Cattle Cattle { get; set; }
     }
